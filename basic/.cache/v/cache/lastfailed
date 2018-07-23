@@ -1,0 +1,5 @@
+{
+  "list1.py::test": true,
+  "string1.py::test": true,
+  "string2.py": true
+}
