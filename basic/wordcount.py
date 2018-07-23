@@ -46,6 +46,27 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 
 ###
+def print_words(filename):
+	file = open(filename,'r')
+	article = file.read()
+	splited = article.split()
+	w = {}
+	for i in splited:
+		if i in w:
+			w[i] = w[i]+1
+		else:
+			w[i] = 1
+	w = sorted(w.keys())
+	return w
+
+def print_top(filename):
+	w = sorted(print_words(filename).items())
+	n = 0
+	for key, item in w:
+		print(key, item)
+		n += 1
+		if n>=20:
+			break
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
@@ -61,8 +82,9 @@ def main():
     elif option == '--topcount':
         print_top(filename)
     else:
-        print 'unknown option: ' + option
+        print( 'unknown option: ' + option)
         sys.exit(1)
 
 if __name__ == '__main__':
     main()
+
